@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+              <!-- container -->
+              <div class="container-fluid">
+
+                <!-- row -->
+                <div class="row p-30-0">
+
+                  <!-- col -->
+                  <div class="col-lg-12">
+
+                    <!-- section title -->
+                    <div class="art-section-title">
+                      <!-- title frame -->
+                      <div class="art-title-frame">
+                        <!-- title -->
+                        <h4>Contact information</h4>
+                      </div>
+                      <!-- title frame end -->
+                    </div>
+                    <!-- section title end -->
+
+                  </div>
+                  <!-- col end -->
+                  <!-- col -->
+                  <div class="col-12 col-xl-4">
+                    <!-- contact card -->
+                    <div class="art-a art-card">
+                      <div class="art-table p-15-15">
+                        <ul>
+                          {% for address in addresses %}
+                          <li>
+                            <h6>Address:</h6><span>{{address.address}}</span>
+                          </li>
+                          <li>
+                            <h6>City:</h6><span>{{address.city}}</span>
+                          </li>
+                          <li>
+                            <h6>Country:</h6><span>{{address.country}}</span>
+                          </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- contact card end -->
+                  </div>
+                  <!-- col end -->
+                  <!-- col -->
+                  <div class="col-12 col-xl-4">
+                    <!-- contact card -->
+                    <div class="art-a art-card">
+                      <div class="art-table p-15-15">
+                        <ul>
+                          {% for social in social_links %}
+                          <li>
+                            <h6>Linkedin:</h6><a href="https://www.linkedin.com/in/{{social.linkedin}}" target="_blank" <span>{{social.linkedin}}</span></a>
+                          </li>
+                          <li>
+                            <h6>Github:</h6><a href="https://www.github.com/{{social.github}}" target="_blank" <span>{{social.github}}</span></a>
+                          </li>
+                          <li>
+                            <h6>Facebook:</h6><a href="https://www.facebook.com/{{social.facebook}}" target="_blank" <span>{{social.facebook}}</span></a>
+                          </li>
+                          {% endfor %}
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- contact card end -->
+                  </div>
+                  <!-- col end -->
+                  <!-- col -->
+                  <div class="col-12 col-xl-4">
+                    <!-- contact card -->
+                    <div class="art-a art-card">
+                      <div class="art-table p-15-15">
+                        <ul>
+                          <li>
+                            <h6>Email:</h6><span>{{get_user.email}}</span>
+                          </li>
+                          <li>
+                            <h6>Office:</h6><span>+88{{get_user.phone_office}}</span>
+                          </li>
+                          <li>
+                            <h6>Personal:</h6><span>+88{{get_user.phone_home}}</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <!-- contact card end -->
+
+                  </div>
+                  <!-- col end -->
+
+                  <!-- col -->
+                  <div class="col-lg-12">
+
+                    <!-- section title -->
+                    <div class="art-section-title">
+                      <!-- title frame -->
+                      <div class="art-title-frame">
+                        <!-- title -->
+                        <h4>Get in touch</h4>
+                      </div>
+                      <!-- title frame end -->
+                    </div>
+                    <!-- section title end -->
+
+                    <!-- contact form frame -->
+                    <div class="art-a art-card">
+
+                      <!-- contact form -->
+                      <form class="art-contact-form" action="" method ="POST">
+                        {% csrf_token %}
+                        <!-- form field -->
+                        <div class="art-form-field">
+                          <!-- name input -->
+                          <input id="name" name="name" class="art-input" type="text" placeholder="Name" required>
+                          <!-- label -->
+                          <label for="name"><i class="fas fa-user"></i></label>
+                        </div>
+                        <!-- form field end -->
+                        <!-- form field -->
+                        <div class="art-form-field">
+                          <!-- email input -->
+                          <input id="email" name="email" class="art-input" type="email" placeholder="Email" required>
+                          <!-- label -->
+                          <label for="email"><i class="fas fa-at"></i></label>
+                        </div>
+                        <!-- form field end -->
+                        <!-- form field -->
+                        <div class="art-form-field">
+                          <!-- message textarea -->
+                          <textarea id="message" name="message" class="art-input" placeholder="Message" required></textarea>
+                          <!-- label -->
+                          <label for="message"><i class="far fa-envelope"></i></label>
+                        </div>
+                        <!-- form field end -->
+                        <!-- button -->
+                        <div>
+                          {% if messages %}
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}" role="alert">
+                            {{ message }}
+                            </div>
+                            {% endfor %}
+                          {% endif %}
+                        </div>
+                        <div class="art-submit-frame">
+                          <button class="art-btn art-btn-md art-submit" type="submit"><span>Send message</span></button>
+                        </div>
+                      </form>
+                      <!-- contact form end -->
+
+                    </div>
+                    <!-- contact form frame end -->
+
+                  </div>
+                  <!-- col end -->
+
+                </div>
+                <!-- row end -->
+
+              </div>
+              <!-- container end -->
+                {% endblock body %}

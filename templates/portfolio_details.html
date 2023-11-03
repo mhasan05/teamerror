@@ -1,0 +1,401 @@
+{% extends "base.html" %}
+{% load static %}
+{% block body %}
+              <!-- container -->
+              <div class="container-fluid">
+
+                <!-- row -->
+                <div class="row p-30-0">
+
+                  <!-- col -->
+                  <div class="col-lg-12">
+
+                    <!-- section title -->
+                    <div class="art-section-title">
+                      <!-- title frame -->
+                      <div class="art-title-frame">
+                        <!-- title -->
+                        <h4>{{request_Portfolio.project_title}}</h4>
+                      </div>
+                      <!-- title frame end -->
+                      <!-- right frame -->
+                      <div class="art-right-frame">
+                        <div class="art-project-category">{{request_Portfolio.category}}</div>
+                      </div>
+                      <!-- right frame end -->
+                    </div>
+                    <!-- section title end -->
+
+                  </div>
+                  <!-- col end -->
+
+                  <!-- col -->
+                  <div class="col-lg-12">
+
+                    <!-- project cover -->
+                    <div class="art-a art-project-cover">
+                      <!-- item frame -->
+                      <a data-fancybox="gallery" data-no-swup href="{{request_Portfolio.feature_image.url}}" class="art-portfolio-item-frame art-horizontal">
+                        <!-- img -->
+                        <img src="{{request_Portfolio.feature_image.url}}" alt="item">
+                        <!-- zoom icon -->
+                        <span class="art-item-hover"><i class="fas fa-expand"></i></span>
+                      </a>
+                      <!-- item end -->
+                    </div>
+                    <!-- project cover nd -->
+
+                  </div>
+                  <!-- col end -->
+
+                  <!-- col -->
+                  <div class="col-lg-12">
+
+                    <!-- section title -->
+                    <div class="art-section-title">
+                      <!-- title frame -->
+                      <div class="art-title-frame">
+                        <!-- title -->
+                        <h4>Project details</h4>
+                      </div>
+                      <!-- title frame end -->
+                    </div>
+                    <!-- section title end -->
+
+                  </div>
+                  <!-- col end -->
+
+                  <!-- col -->
+                  <div class="col-lg-8">
+
+                    <div class="art-a art-card art-fluid-card">
+                      <h5 class="mb-15">Description</h5>
+                      <div class="mb-15">{{request_Portfolio.description |safe}}</div>
+                      <!-- button -->
+                      <div class="art-buttons-frame"><a href="{{request_Portfolio.project_link}}" class="art-link art-color-link art-w-chevron" target="_blank" data-no-swup>Live Project</a></div>
+                    </div>
+
+                  </div>
+                  <!-- col end -->
+
+                  <!-- col -->
+                  <div class="col-lg-4">
+
+                    <div class="art-a art-card">
+                      <!-- table -->
+                      <div class="art-table p-15-15">
+                        <ul>
+                          <li>
+                            <h6>Duration:</h6><span>{{request_Portfolio.duration}}</span>
+                          </li>
+                          <li>
+                            <h6>Status:</h6><span>{{request_Portfolio.status}}</span>
+                          </li>
+                        </ul>
+                      </div>
+                      <!-- table end -->
+                    </div>
+
+                  </div>
+                  <!-- col end -->
+
+                </div>
+                <!-- row end -->
+
+
+              </div>
+              <!-- container end -->
+
+              <!-- container -->
+              <div class="container-fluid">
+
+                <!-- row -->
+                <div class="row">
+
+                  <!-- col -->
+                  <div class="col-lg-12">
+
+                    <!-- section title -->
+                    <div class="art-section-title">
+                      <!-- title frame -->
+                      <div class="art-title-frame">
+                        <!-- title -->
+                        <h4>Result</h4>
+                      </div>
+                      <!-- title frame end -->
+                    </div>
+                    <!-- section title end -->
+
+                  </div>
+                  <!-- col end -->
+
+                  <div class="art-grid art-grid-2-col art-gallery">
+                    {% for img in related_image %}
+                    {% if img.project|stringformat:'s' == request_Portfolio.project_title|stringformat:'s' %}
+                    <div class="art-grid-item webTemplates">
+                      <!-- grid item frame -->
+                      <a data-fancybox="gallery" data-no-swup href="{{img.image.url}}" class="art-a art-portfolio-item-frame art-horizontal">
+                        <!-- img -->
+                        <img src="{{img.image.url}}" alt="item">
+                        <!-- zoom icon -->
+                        <span class="art-item-hover"><i class="fas fa-expand"></i></span>
+                      </a>
+                      <!-- grid item frame end -->
+                    </div>
+                    {% endif %}
+                    {% endfor %}
+                    
+                  </div>
+                </div>
+                <!-- row end -->
+
+              </div>
+              <!-- container end -->
+
+              <!-- container -->
+              <div class="container-fluid">
+
+                <!-- row -->
+                <div class="row">
+
+                  <!-- col -->
+                  <div class="col-lg-12">
+
+                    <!-- section title -->
+                    <div class="art-section-title">
+                      <!-- title frame -->
+                      <div class="art-title-frame">
+                        <!-- title -->
+                        <h4>Client reviews</h4>
+                      </div>
+                      <!-- title frame end -->
+                    </div>
+                    <!-- section title end -->
+
+                  </div>
+                  <!-- col end -->
+
+                  <!-- col -->
+                  <div class="col-lg-12">
+                    <!-- slider container -->
+                    <div
+                      class="swiper-container art-testimonial-slider"
+                      style="overflow: visible"
+                    >
+                      <!-- slider wrapper -->
+                      <div class="swiper-wrapper">
+                        {% for review in feedback reversed%}
+                        
+                        
+                        <!-- slide -->
+                        <div class="swiper-slide">
+                          <!-- testimonial -->
+                          <div class="art-a art-testimonial">
+                            <!-- testimonial body -->
+                            <div class="testimonial-body">
+                              <!-- photo -->
+                              <img
+                                class="art-testimonial-face"
+                                src="{{review.image.url}}"
+                                alt="face"
+                              />
+                              <!-- name -->
+                              <h5>{{review.client_name}}</h5>
+                              <div class="art-el-suptitle mb-15">
+                                {{review.source}}
+                              </div>
+                              <!-- text -->
+                              <div class="mb-15">
+                                {{review.review}}
+                              </div>
+                            </div>
+                            <!-- testimonial body end -->
+                            <!-- testimonial footer -->
+                            <div class="art-testimonial-footer">
+                              <div class="art-left-side">
+                                <!-- star rate -->
+                                <ul class="art-star-rate">
+                                  {% for x in star %}
+                                  {% if forloop.counter <= review.rating|add:0 %}
+                                  <li><i class="fas fa-star"></i></li>
+                                  {% else %}
+                                  <li class="art-empty-item"><i class="fas fa-star"></i></li>
+                                  {% endif %}
+                                  {% endfor %}
+                                </ul>
+                                <!-- star rate end -->
+                              </div>
+                              <div class="art-right-side"></div>
+                            </div>
+                            <!-- testimonial footer end -->
+                          </div>
+                          <!-- testimonial end -->
+                        </div>
+                        <!-- slide end -->
+                        {% endfor %}
+      
+                      </div>
+                      <!-- slider wrapper end -->
+                    </div>
+                    <!-- slider container end -->
+                  </div>
+                  <!-- col end -->
+
+                  <!-- col -->
+                  <div class="col-lg-12">
+
+                    <!-- slider navigation -->
+                    <div class="art-slider-navigation">
+
+                      <!-- left side -->
+                      <div class="art-sn-left">
+
+                        <!-- slider pagination -->
+                        <div class="swiper-pagination"></div>
+
+                      </div>
+                      <!-- left side end -->
+
+                      <!-- right side -->
+                      <div class="art-sn-right">
+
+                        <!-- slider navigation -->
+                        <div class="art-slider-nav-frame">
+                          <!-- prev -->
+                          <div class="art-slider-nav art-testi-swiper-prev"><i class="fas fa-chevron-left"></i></div>
+                          <!-- next -->
+                          <div class="art-slider-nav art-testi-swiper-next"><i class="fas fa-chevron-right"></i></div>
+                        </div>
+                        <!-- slider navigation -->
+
+                      </div>
+                      <!-- right side end -->
+
+                    </div>
+                    <!-- slider navigation end -->
+
+                  </div>
+                  <!-- col end -->
+
+                </div>
+                <!-- row end -->
+
+              </div>
+              <!-- container end -->
+
+              <!-- container -->
+              <div class="container-fluid">
+                <!-- row -->
+                <div class="row p-30-0">
+                  {% for experience in experiences %}
+                  <!-- col -->
+                  <div class="col-md-3 col-6">
+                    <!-- couner frame -->
+                    <div class="art-counter-frame">
+                      <!-- counter -->
+                      <div class="art-counter-box">
+                        <!-- counter number -->
+                        <span class="art-counter">{{experience.year_of_experience}}</span><span class="art-counter-plus">+</span>
+                      </div>
+                      <!-- counter end -->
+                      <!-- title -->
+                      <h6>Years Experience</h6>
+                    </div>
+                    <!-- couner frame end -->
+                  </div>
+                  <!-- col end -->
+
+                  <!-- col -->
+                  <div class="col-md-3 col-6">
+                    <!-- couner frame -->
+                    <div class="art-counter-frame">
+                      <!-- counter -->
+                      <div class="art-counter-box">
+                        <!-- counter number -->
+                        <span class="art-counter">{{experience.completed_project}}</span><span class="art-counter-plus">+</span>
+                      </div>
+                      <!-- counter end -->
+                      <!-- title -->
+                      <h6>Order Completed</h6>
+                    </div>
+                    <!-- couner frame end -->
+                  </div>
+                  <!-- col end -->
+
+                  <!-- col -->
+                  <div class="col-md-3 col-6">
+                    <!-- couner frame -->
+                    <div class="art-counter-frame">
+                      <!-- counter -->
+                      <div class="art-counter-box">
+                        <!-- counter number -->
+                        <span class="art-counter">{{experience.happy_customer}}</span><span class="art-counter-plus">+</span>
+                      </div>
+                      <!-- counter end -->
+                      <!-- title -->
+                      <h6>Happy Customers</h6>
+                    </div>
+                    <!-- couner frame end -->
+                  </div>
+                  <!-- col end -->
+
+                  <!-- col -->
+                  <div class="col-md-3 col-6">
+                    <!-- couner frame -->
+                    <div class="art-counter-frame">
+                      <!-- counter -->
+                      <div class="art-counter-box">
+                        <!-- counter number -->
+                        <span class="art-counter">{{experience.working_hour}}</span><span class="art-counter-plus">+</span>
+                      </div>
+                      <!-- counter end -->
+                      <!-- title -->
+                      <h6>Working Hours</h6>
+                    </div>
+                    <!-- couner frame end -->
+                  </div>
+                  <!-- col end -->
+                  {% endfor %}
+                </div>
+                <!-- row end -->
+              </div>
+              <!-- container end -->
+              <!-- container -->
+              <br>
+              <div class="container-fluid">
+
+                <!-- row -->
+                <div class="row">
+
+                  <!-- col -->
+                  <div class="col-lg-12">
+
+                    <!-- call to action -->
+                    <div class="art-a art-banner" style="background-image: url({% static 'img/bg.jpg' %})">
+                      <!-- overlay -->
+                      <div class="art-banner-overlay">
+                        <!-- main title -->
+                        <div class="art-banner-title text-center">
+                          <!-- title -->
+                          <h1 class="mb-15">Ready to order your project?</h1>
+                          <!-- suptitle -->
+                          <div class="art-lg-text art-code mb-25">Let's work together!</div>
+                          <!-- button -->
+                          <a href="{% url 'contact' %}" class="art-btn art-btn-md"><span>Contact Us</span></a>
+                        </div>
+                        <!-- main title end -->
+                      </div>
+                      <!-- overlay end -->
+                    </div>
+                    <!-- call to action end  -->
+                    <br>
+                    
+                  </div>
+                  <!-- col end -->
+
+                </div>
+                <!-- row end -->
+
+              </div>
+              <!-- container end -->
+              {% endblock body %}

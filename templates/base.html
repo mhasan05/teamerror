@@ -1,0 +1,349 @@
+<!doctype html>
+{% load static %}
+<html lang="zxx">
+
+<head>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <!-- color of address bar in mobile browser -->
+  <meta name="theme-color" content="#2B2B35">
+  <!-- favicon  -->
+  <link rel="shortcut icon" href="{{get_user.profile_pic.url}}" type="image/x-icon">
+  <!-- bootstrap css -->
+  <link rel="stylesheet" href="{% static 'css/plugins/bootstrap.min.css' %}">
+  <!-- font awesome css -->
+  <link rel="stylesheet" href="{% static 'css/plugins/font-awesome.min.css' %}">
+  <!-- swiper css -->
+  <link rel="stylesheet" href="{% static 'css/plugins/swiper.min.css' %}">
+  <!-- fancybox css -->
+  <link rel="stylesheet" href="{% static 'css/plugins/fancybox.min.css' %}">
+  <!-- main css -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <title>Teamerror - Think Different !</title>
+</head>
+
+<body>
+
+  <!-- app -->
+  <div class="art-app">
+
+    <!-- mobile top bar -->
+    <div class="art-mobile-top-bar"></div>
+
+    <!-- app wrapper -->
+    <div class="art-app-wrapper">
+
+      <!-- app container end -->
+      <div class="art-app-container">
+
+        <!-- info bar -->
+        <div class="art-info-bar">
+
+          <!-- menu bar frame -->
+          <div class="art-info-bar-frame">
+
+            <!-- info bar header -->
+            <div class="art-info-bar-header">
+              <!-- info bar button -->
+              <div class="art-info-bar-btn">
+                <!-- icon -->
+                <i class="fas fa-ellipsis-v"></i>
+              </div>
+              <!-- info bar button end -->
+            </div>
+            <!-- info bar header end -->
+
+            <!-- info bar header -->
+            <div class="art-header">
+              <!-- avatar -->
+              <div class="art-avatar">
+                <a data-fancybox="avatar" data-no-swup href="{{get_user.profile_pic.url}}" class="art-avatar-curtain">
+                  <img src="{{get_user.profile_pic.url}}" alt="avatar">
+                  <i class="fas fa-expand"></i>
+                </a>
+                <!-- available -->
+                <div class="art-lamp-light">
+                  <!-- add class 'art-not-available' if not available-->
+                  <div class="art-available-lamp"></div>
+                </div>
+              </div>
+              <!-- avatar end -->
+              <!-- name -->
+              <h5 class="art-name mb-10"><a href="{% url 'home' %}">teamerror</a></h5>
+              <!-- post -->
+              <div class="art-sm-text">Back-End Developer <br>Python/Django/Flask. </div>
+            </div>
+            <!-- info bar header end -->
+
+            <!-- scroll frame -->
+            <div id="scrollbar2" class="art-scroll-frame">
+
+              {% for address in addresses %}
+              <!-- info bar about -->
+              <div class="art-table p-15-15">
+                <!-- about text -->
+                <ul>
+                  <!-- country -->
+                  <li>
+                    <h6>Address:</h6><span>{{address.address}}</span>
+                  </li>
+                  <!-- city -->
+                  <li>
+                    <h6>City:</h6><span>{{address.city}}</span>
+                  </li>
+                  <!-- age -->
+                  <li>
+                    <h6>Country:</h6><span>{{address.country}}</span>
+                  </li>
+                </ul>
+              </div>
+              <!-- info bar about end -->
+              {% endfor %}
+              <!-- divider -->
+              <div class="art-ls-divider"></div>
+
+              <!-- language skills -->
+              <div class="art-lang-skills p-30-15">
+
+                {% for language in languages %}
+                <!-- skill -->
+                <div class="art-lang-skills-item">
+                  <div id="circleprog{{forloop.counter}}" class="art-cirkle-progress"></div>
+                  <!-- title -->
+                  <h6>{{language.name}}</h6>
+                </div>
+                <!-- skill end -->
+                {% endfor %}
+              </div>
+              <!-- language skills end -->
+
+              <!-- divider -->
+              <div class="art-ls-divider"></div>
+
+              <!-- hard skills -->
+              <div class="art-hard-skills p-30-15">
+
+                {% for skill in coreskills %}
+                <!-- skill -->
+                <div class="art-hard-skills-item">
+                  <div class="art-skill-heading">
+                    <!-- title -->
+                    <h6>{{skill.name}}</h6>
+                  </div>
+                  <!-- progressbar frame -->
+                  <div class="art-line-progress">
+                    <!-- progressbar -->
+                    <div id="lineprog{{forloop.counter}}"></div>
+                  </div>
+                  <!-- progressbar frame end -->
+                </div>
+                <!-- skill end -->
+                {% endfor %}
+              </div>
+              <!-- language skills end -->
+
+              <!-- divider -->
+              <div class="art-ls-divider"></div>
+
+              <!-- knowledge list -->
+              <ul class="art-knowledge-list p-15-0">
+                {% for skill in otherskills %}
+                <!-- list item -->
+                <li>{{skill.name}}</li>
+                <!-- list item -->
+                {% endfor %}
+              </ul>
+              <!-- knowledge list end -->
+
+              <!-- divider -->
+              <div class="art-ls-divider"></div>
+
+              <!-- links frame -->
+              <div class="art-links-frame p-15-15">
+
+                {% for link in cv %}
+                <!-- download cv button -->
+                <a href="{{link.cv_link}}" class="art-link" download data-no-swup>Download cv <i class="fas fa-download"></i></a>
+                {% endfor %}
+              </div>
+              <!-- links frame end -->
+
+            </div>
+            <!-- scroll frame end -->
+
+            <!-- sidebar social -->
+            <div class="art-ls-social">
+              {% for username in social_links %}
+              <a href="https://www.linkedin.com/in/{{username.linkedin}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+              <!-- social link -->
+              <a href="https://www.github.com/{{username.github}}" target="_blank"><i class="fab fa-github"></i></a>
+              <!-- social link -->
+              <a href="https://www.facebook.com/{{username.facebook}}" target="_blank"><i class="fab fa-facebook"></i></a>
+              {% endfor %}
+            </div>
+            <!-- sidebar social end -->
+
+          </div>
+          <!-- menu bar frame end -->
+
+        </div>
+        <!-- info bar end -->
+
+        <!-- content -->
+        <div class="art-content">
+
+          <!-- curtain -->
+          <div class="art-curtain"></div>
+
+          <!-- top background -->
+          <div class="art-top-bg" style="background-image: url({% static 'img/bg.jpg' %})">
+            <!-- overlay -->
+            <div class="art-top-bg-overlay"></div>
+            <!-- overlay end -->
+          </div>
+          <!-- top background end -->
+
+          <!-- swup container -->
+          <div class="transition-fade" id="swup">
+
+            <!-- scroll frame -->
+            <div id="scrollbar" class="art-scroll-frame">
+                {% block body %}
+
+
+
+
+
+                {% endblock body %}
+              <!-- container -->
+              <div class="container-fluid">
+
+                <!-- footer -->
+                <footer>
+                  <!-- copyright -->
+                  <div class="art-copy">© 2023 Teamerror.net</div>
+                  <!-- author ( Please! Do not delete it. You are awesome! :) -->
+                  <div>Developer:&#160; <a href="https://www.facebook.com/mehedi0005" target="_blank" data-no-swup>Md Mehedi Hasan</a></div>
+                </footer>
+                <!-- footer end -->
+
+              </div>
+              <!-- container end -->
+
+            </div>
+            <!-- scroll frame end -->
+
+          </div>
+          <!-- swup container end -->
+
+        </div>
+        <!-- content end -->
+
+        <!-- menu bar -->
+        <div class="art-menu-bar">
+
+          <!-- menu bar frame -->
+          <div class="art-menu-bar-frame">
+
+            <!-- menu bar header -->
+            <div class="art-menu-bar-header">
+              <!-- menu bar button -->
+              <div class="art-menu-bar-btn">
+                <!-- icon -->
+                <span></span>
+              </div>
+              <!-- menu bar button end -->
+            </div>
+            <!-- menu bar header end -->
+
+            <!-- current page title -->
+            <div class="art-current-page"></div>
+            <!-- current page title end -->
+
+            <!-- scroll frame -->
+            <div class="art-scroll-frame">
+
+              <!-- menu -->
+              <nav id="swupMenu">
+                <!-- menu list -->
+                <ul class="main-menu">
+                  <!-- menu item -->
+                  <li class="menu-item {% if active_page == 'Home' %}current-menu-item{% endif %}"><a href="{% url 'home' %}">Home</a></li>
+                  <!-- menu item -->
+                  <li class="menu-item {% if active_page == 'Portfolio' %}current-menu-item{% endif %}"><a href="{% url 'portfolio' %}">Portfolio</a></li>
+                  <!-- menu item -->
+                  <li class="menu-item {% if active_page == 'Blogs' %}current-menu-item{% endif %}"><a href="{% url 'blogs' %}">Blogs</a></li>
+                <!-- menu item -->
+                <li class="menu-item {% if active_page == 'Contact' %}current-menu-item{% endif %}"><a href="{% url 'contact' %}">Contact</a></li>
+                </ul>
+                <!-- menu list end -->
+              </nav>
+              <!-- menu end -->
+
+              <!-- language change -->
+              <ul class="art-language-change">
+
+                <!-- language item -->
+                <li class="art-active-lang"><a>EN</a></li>
+              </ul>
+              <!-- language change end -->
+
+            </div>
+            <!-- scroll frame end -->
+
+          </div>
+          <!-- menu bar frame -->
+
+        </div>
+        <!-- menu bar end -->
+
+      </div>
+      <!-- app container end -->
+
+    </div>
+    <!-- app wrapper end -->
+
+    <!-- preloader -->
+    <div class="art-preloader">
+      <!-- preloader content -->
+      <div class="art-preloader-content">
+        <!-- title -->
+        <h4>teamerror.net</h4>
+        <!-- progressbar -->
+        <div id="preloader" class="art-preloader-load"></div>
+      </div>
+      <!-- preloader content end -->
+    </div>
+    <!-- preloader end -->
+
+  </div>
+  <!-- app end -->
+  <!-- jquery js -->
+  <script src="{% static 'js/plugins/jquery.min.js' %}"></script>
+  <!-- anime js -->
+  <script src="{% static 'js/plugins/anime.min.js' %}"></script>
+  <!-- swiper js -->
+  <script src="{% static 'js/plugins/swiper.min.js' %}"></script>
+  <!-- progressbar js -->
+  <script src="{% static 'js/plugins/progressbar.min.js' %}"></script>
+  <!-- smooth scrollbar js -->
+  <script src="{% static 'js/plugins/smooth-scrollbar.min.js' %}"></script>
+  <!-- overscroll js -->
+  <script src="{% static 'js/plugins/overscroll.min.js' %}"></script>
+  <!-- typing js -->
+  <script src="{% static 'js/plugins/typing.min.js' %}"></script>
+  <!-- isotope js -->
+  <script src="{% static 'js/plugins/isotope.min.js' %}"></script>
+  <!-- fancybox js -->
+  <script src="{% static 'js/plugins/fancybox.min.js' %}"></script>
+  <!-- swup js -->
+  <script src="{% static 'js/plugins/swup.min.js' %}"></script>
+
+  <!-- main js -->
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
