@@ -220,8 +220,21 @@
                         <!-- price list -->
                         <ul class="art-price-list">
                           <!-- list item -->
-                          
-                          {% comment %} <li class="art-empty-item">Logo design</li> {% endcomment %}
+                          {% if package.price|stringformat:"s" == "FREE" %}
+                          <li class="art-empty-item">Web Development</li>
+                          <li class="art-empty-item">Web Design</li>
+                          <li class="">Bug Fixing</li>
+                          <li class="art-empty-item">Advertising</li>
+                          <li class="art-empty-item">Python Script</li>
+                          <li class="art-empty-item">Custom Project</li>
+                          {% else %}
+                          <li class="">Web Development</li>
+                          <li class="">Web Design</li>
+                          <li class="">Bug Fixing</li>
+                          <li class="">Advertising</li>
+                          <li class="">Python Script</li>
+                          <li class="">Custom Project</li>
+                          {% endif %}
                         </ul>
                         <!-- price list end -->
                         <!-- button -->

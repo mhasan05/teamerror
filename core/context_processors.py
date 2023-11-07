@@ -1,6 +1,7 @@
 from skill.models import *
 from contact.models import *
 from account.models import UserAccount
+import datetime
 def left_slider(request):
     get_user = UserAccount.objects.get(username = "teamerror")
     languages = Language.objects.all()
@@ -9,6 +10,8 @@ def left_slider(request):
     cv = CV.objects.all()
     social_links = Social.objects.all()
     addresses = Address.objects.all
+    today = datetime.date.today()
+    year = today.year
 
     data = {
         'languages':languages,
@@ -18,5 +21,6 @@ def left_slider(request):
         'addresses':addresses,
         'cv':cv,
         'get_user':get_user,
+        'year':year,
     }
     return data

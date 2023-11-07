@@ -25,7 +25,7 @@ class Portfolio(BaseModel):
     category = models.ForeignKey(Category,related_name='category', on_delete=models.CASCADE)
     project_title = models.CharField(max_length=300)
     feature_image = models.ImageField(upload_to='images/portfolio/feature')
-    description = models.TextField(max_length=500)
+    description = models.TextField(max_length=1000)
     project_link = models.URLField()
     duration = models.CharField(max_length=30)
     status = models.CharField(max_length=50)
