@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from ckeditor.fields import RichTextField
 
 class BaseModel(models.Model):
     uuid = models.UUIDField(primary_key=True, default=uuid.uuid4,editable=False)
@@ -25,7 +26,7 @@ class Portfolio(BaseModel):
     category = models.ForeignKey(Category,related_name='category', on_delete=models.CASCADE)
     project_title = models.CharField(max_length=300)
     feature_image = models.ImageField(upload_to='images/portfolio/feature')
-    description = models.TextField(max_length=1000)
+    RichTextField(null = True, blank = True)
     project_link = models.URLField()
     duration = models.CharField(max_length=30)
     status = models.CharField(max_length=50)
